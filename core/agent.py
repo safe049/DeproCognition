@@ -159,12 +159,14 @@ class DeproCognitionAgent:
                 "content": summary_prompt
             }])
         
-        # 存入长期记忆
+        # 存入长期记忆 - 确保包含所有必要字段
         self.long_term_memory.add({
             'content': summary,
+            'timestamp': current_timestamp(),  # 添加时间戳
             'metadata': {
                 'type': 'conversation_summary',
-                'timestamp': current_timestamp()
+                'source': 'auto_summary',
+                'conversation_count': self.conversation_count
             }
         })
     
