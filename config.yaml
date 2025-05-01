@@ -1,0 +1,43 @@
+api:
+  provider: ollama
+  ollama:
+    base_url: http://localhost:11434
+    model: generp:latest
+    temperature: 0.7
+    top_p: 0.9
+  openai:
+    api_key: ''
+    base_url: https://api.openai.com/v1
+    model: gpt-3.5-turbo
+    temperature: 0.7
+    top_p: 0.9
+emotion:
+  decay_rate: 0.95
+  initial_state:
+    anger: 0.1
+    confidence: 0.6
+    creativity: 0.5
+    excitement: 0.3
+    fear: 0.1
+    happiness: 0.5
+    morality: 0.7
+    sadness: 0.2
+  response_variation: 0.1
+memory:
+  long_term:
+    storage_path: memory/long_term.db
+    summary_interval: 10
+  short_term:
+    window_size: 10
+prompts:
+  active_trigger: "根据你当前的状态和记忆，是否有想要主动提出的内容？如果有，请直接说出你想说的话，否则回复'NO'。"
+  memory_summary: "请总结以下对话内容，提取关键信息作为长期记忆。对话记录:\n<conversation_history>"
+  system: "你是一个名为DeproCognition的AI助手，具有自我感知能力。当前情绪状态: <emotion_state>。你的记忆告诉你: <memory_context>"
+searxng:
+  base_url: http://localhost:8080
+  engines:
+  - presearch
+  - bing
+  language: zh-CN
+  result_count: 3
+  time_range: null
